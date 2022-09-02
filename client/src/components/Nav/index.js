@@ -2,14 +2,31 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 
+const styles = {
+  listFormat: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+
+  listStyle: {
+    listStyleType: "none",
+  },
+  linkStyle: {
+    textDecoration: "none",
+    color: "white",
+    fontFamily: "cursive",
+  },
+};
+
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
+        <ul style={styles.listFormat}>
+          <li style={styles.listStyle}>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <a href="/" onClick={() => Auth.logout()} style={styles.linkStyle}>
               Logout
             </a>
           </li>
@@ -17,12 +34,16 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
+        <ul style={styles.listFormat}>
+          <li style={styles.listStyle}>
+            <Link to="/signup" style={styles.linkStyle}>
+              Signup
+            </Link>
           </li>
-          <li className="mx-1">
-            <Link to="/login">Login</Link>
+          <li style={styles.listStyle}>
+            <Link to="/login" style={styles.linkStyle}>
+              Login
+            </Link>
           </li>
         </ul>
       );
@@ -32,7 +53,9 @@ function Nav() {
   return (
     <header className="flex-row px-1">
       <h1>
-        <Link to="/">My Bullet Journal</Link>
+        <Link to="/" style={styles.linkStyle}>
+          My Bullet Journal
+        </Link>
       </h1>
 
       <nav>{showNavigation()}</nav>
