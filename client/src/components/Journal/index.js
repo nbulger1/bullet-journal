@@ -1,9 +1,16 @@
 import React from "react";
 import HTMLFlipBook from "react-pageflip";
+import YearCalendar from "../YearCalendar";
 
 const styles = {
-  bookStyle: {
+  pageStyle: {
     border: "black solid 1px",
+  },
+
+  bookContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 
@@ -31,21 +38,25 @@ function MyJournal(props) {
           </button>
         </nav>
       </div>
-      <HTMLFlipBook
-        width={300}
-        height={500}
-        size="fixed"
-        minWidth={315}
-        maxWidth={1000}
-        minHeight={400}
-        maxHeight={1533}
-        maxShadowOpacity={0.5}
-      >
-        <div className="demoPage">Page 1</div>
-        <div className="demoPage">Page 2</div>
-        <div className="demoPage">Page 3</div>
-        <div className="demoPage">Page 4</div>
-      </HTMLFlipBook>
+      <div style={styles.bookContainer}>
+        <HTMLFlipBook
+          width={500}
+          height={700}
+          size="stretch"
+          minWidth={315}
+          maxWidth={1000}
+          minHeight={400}
+          maxHeight={1533}
+          maxShadowOpacity={0.5}
+        >
+          <div className="demoPage">
+            <YearCalendar />
+          </div>
+          <div className="demoPage">Page 2</div>
+          <div className="demoPage">Page 3</div>
+          <div className="demoPage">Page 4</div>
+        </HTMLFlipBook>
+      </div>
     </div>
   );
 }
